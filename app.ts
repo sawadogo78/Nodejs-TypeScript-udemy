@@ -3,7 +3,8 @@ const num2Element = document.getElementById('num2') as HTMLInputElement;
 const buttonElement = document.querySelector('button')!; // not null, the exclamtion
 
 // defining array
-const numResults: number[] = []; // this means an array full with number
+// const numResults: number[] = []; // this means an array full with number
+const numResults: Array<number> = []; // generics
 const textResults: string[] = []; // an array full with string
 
 // Type aliases and interfaces (this allow to optimize the code of types declaration)
@@ -41,5 +42,16 @@ buttonElement.addEventListener('click',()=>{
     printResult({val:+result, timestamp: new Date()});
     console.log(numResults, textResults);
 
+});
+
+// generic 
+const myPromise =new Promise<string>((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve('It worked!')
+    }, 1000)
+});
+
+myPromise.then(result=>{
+    console.log(result.split('w'));
 })
 
